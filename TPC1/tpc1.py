@@ -1,8 +1,9 @@
+"""This module contains functions related to TPC1."""
 import sys
 
 modalities = []
-athletes_able = 0
-athletes_not_able = 0
+ATHELETES_ABLE = 0
+ATHLETES_NOT_ABLE = 0
 age_groups = {}
 
 # Loop through the age groups with a 5-year interval
@@ -18,13 +19,13 @@ lines = sys.stdin.readlines()
 total_lines = len(lines)
 
 for line in lines:
-    input = line.rstrip()  # rstrip() removes trailing newline characters
-    values = input.split(',')
+    line_input = line.rstrip()  # rstrip() removes trailing newline characters
+    values = line_input.split(',')
 
     if values[12] == 'true':
-        athletes_able += 1
+        ATHELETES_ABLE += 1
     else:
-        athletes_not_able += 1
+        ATHLETES_NOT_ABLE += 1
 
     if values[8] not in modalities:
         modalities.append(values[8])
@@ -37,8 +38,8 @@ for line in lines:
             break
 
 # Calculate the percentages of athletes able and not able
-percentage_able = (athletes_able / total_lines) * 100
-percentage_not_able = (athletes_not_able / total_lines) * 100
+percentage_able = (ATHELETES_ABLE / total_lines) * 100
+percentage_not_able = (ATHLETES_NOT_ABLE / total_lines) * 100
 
 modalities.sort()
 print(f"Modalities: {modalities}")
